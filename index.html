@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Stars Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+            color: #4db8ff;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        /* Navigation */
+        nav {
+            width: 100%;
+            min-height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            list-style: none;
+            gap: 30px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 0;
+            position: relative;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        nav li {
+            position: relative;
+            padding: 8px 5px;
+            cursor: pointer;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        nav li:not(:last-child):after {
+            content: "";
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 20px;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav li:hover {
+            color: #4db8ff;
+            transform: translateY(-2px);
+        }
+        
+        nav button {
+            background: linear-gradient(45deg, #3498db, #1abc9c);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        nav button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
+            background: linear-gradient(45deg, #2980b9, #16a085);
+        }
+        
+        nav input {
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            min-width: 250px;
+            transition: all 0.3s ease;
+        }
+        
+        nav input:focus {
+            outline: none;
+            border-color: #4db8ff;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 15px rgba(77, 184, 255, 0.3);
+        }
+        
+        nav input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        
+        /* Player Gallery */
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: center;
+            padding: 30px;
+        }
+        
+        .player-card {
+            width: 300px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .player-img {
+            height: 350px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .player-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .player-card:hover .player-img img {
+            transform: scale(1.1);
+        }
+        
+        .player-info {
+            padding: 20px;
+            background: white;
+        }
+        
+        .player-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .player-info p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        
+        .player-stats {
+            display: flex;
+            justify-content: space-around;
+            background: #f8f9fa;
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, #0f2027, #203a43);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: #4db8ff;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            transform: translateY(-50px);
+            transition: transform 0.4s ease;
+            position: relative;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 20px;
+            background: linear-gradient(to right, #0f2027, #203a43);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .modal-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .modal-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .player-bio {
+            margin-bottom: 25px;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        .career-stats {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .career-stats h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-item .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+        
+        .stat-item .label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .achievements {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .achievements h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        .achievements ul {
+            padding-left: 20px;
+        }
+        
+        .achievements li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* Login Form Styles */
+        #loginForm {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: linear-gradient(to right, #0f2027, #203a43);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 200;
+            width: 320px;
+            margin-top: 10px;
+        }
+        
+        .login-form-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .login-form-content h3 {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .login-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .login-input-group label {
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+        
+        .login-input-group input {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .login-input-group input:focus {
+            outline: none;
+            border-color: #4db8ff;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 10px rgba(77, 184, 255, 0.3);
+        }
+        
+        .login-btn {
+            background: linear-gradient(45deg, #3498db, #1abc9c);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            text-align: center;
+            height: 20px;
+            margin-top: 5px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            nav ul {
+                gap: 15px;
+            }
+            
+            nav input {
+                min-width: 200px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .modal-content {
+                width: 90%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            #loginForm {
+                right: 50%;
+                transform: translateX(50%);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            nav li:not(:last-child):after {
+                display: none;
+            }
+            
+            .hero {
+                padding: 40px 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            main {
+                padding: 20px 10px;
+                gap: 30px;
+            }
+            
+            .modal-body {
+                flex-direction: column;
+            }
+            
+            .modal-img {
+                min-width: 100%;
+            }
+            
+            nav input {
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-cricket"></i>
+                <h1>Cricket Stars</h1>
+            </div>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> ganeshmuruga2005@gmail.com</p>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+        
+
+            <li><a href="nav.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li>
+                <button id="loginBtn">Login</button>
+                <div id="loginForm">
+                    <div class="login-form-content">
+                        <h3>Player Login</h3>
+                        <div class="login-input-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Enter your username">
+                        </div>
+                        <div class="login-input-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password">
+                        </div>
+                        <div class="error-message" id="errorMessage"></div>
+                        <button class="login-btn" onclick="checkLogin()">Login to View Rohit</button>
+                    </div>
+                </div>
+            </li>
+            <li><button id="logoutBtn">Log out</button></li>
+            <li>
+                <input type="text" id="searchInput" placeholder="Search Rohit Image">
+                <button onclick="searchImage()">Search</button>
+            </li>
+        </ul>
+    </nav>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>India's Cricket Superstars</h2>
+            <p>Discover the profiles of India's top cricket players. Explore their achievements, statistics, and career highlights that have made them icons of the sport.</p>
+        </div>
+    </section>
+    
+    <main>
+        <div class="player-card" data-player="rohit">
+            <div class="player-img">
+                <img src="/Image/ro.webp" alt="Rohit Sharma">
+            </div>
+            <div class="player-info">
+                <h3>Rohit Sharma</h3>
+                <p>Captain of the Indian national team. Known for his explosive batting and record-breaking centuries.</p>
+            </div>
+            <div class="player-stats">
+                <div class="stat">
+                    <div class="stat-value">40</div>
+                    <div class="stat-label">Centuries</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">264</div>
+                    <div class="stat-label">Highest Score</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="player-card" data-player="hardik">
+            <div class="player-img">
+                <img src="/Image/hardik-pandya.png" alt="Hardik Pandya">
+            </div>
+            <div class="player-info">
+                <h3>Hardik Pandya</h3>
+                <p>All-rounder known for his aggressive batting and effective medium-fast bowling.</p>
+            </div>
+            <div class="player-stats">
+                <div class="stat">
+                    <div class="stat-value">92.4</div>
+                    <div class="stat-label">Strike Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">142</div>
+                    <div class="stat-label">Wickets</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="player-card" data-player="rahul">
+            <div class="player-img">
+                <img src="/Image/rahul.jpg" alt="KL Rahul">
+            </div>
+            <div class="player-info">
+                <h3>KL Rahul</h3>
+                <p>Versatile batsman and wicket-keeper. Known for his elegant stroke play and adaptability.</p>
+            </div>
+            <div class="player-stats">
+                <div class="stat">
+                    <div class="stat-value">55.4</div>
+                    <div class="stat-label">Average</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">199</div>
+                    <div class="stat-label">Catches</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="player-card" data-player="sky">
+            <div class="player-img">
+                <img src="/Image/sky.jpg" alt="Suryakumar Yadav">
+            </div>
+            <div class="player-info">
+                <h3>Suryakumar Yadav</h3>
+                <p>Dynamic middle-order batsman known for his innovative stroke play and 360-degree batting.</p>
+            </div>
+            <div class="player-stats">
+                <div class="stat">
+                    <div class="stat-value">180.3</div>
+                    <div class="stat-label">Strike Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">15</div>
+                    <div class="stat-label">Man of Match</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Career Modals -->
+    <div class="modal" id="rohit-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Rohit Sharma - Career</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img src="/Image/ro.webp" alt="Rohit Sharma">
+                </div>
+                <div class="modal-info">
+                    <p class="player-bio">
+                        Rohit Gurunath Sharma is an Indian international cricketer and the current captain of the Indian national cricket team. He is a right-handed opening batsman and an occasional right-arm off break bowler. He plays for Mumbai in domestic cricket and captains Mumbai Indians in the Indian Premier League.
+                    </p>
+                    <div class="career-stats">
+                        <h3>Career Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="value">10,000+</div>
+                                <div class="label">ODI Runs</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">40</div>
+                                <div class="label">Centuries</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">264</div>
+                                <div class="label">Highest Score</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">49.27</div>
+                                <div class="label">Batting Avg</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievements">
+                        <h3>Major Achievements</h3>
+                        <ul>
+                            <li>Only player with three double-centuries in ODIs</li>
+                            <li>Highest individual score in ODIs (264 vs Sri Lanka)</li>
+                            <li>ICC ODI Player of the Year (2019)</li>
+                            <li>Led India to Asia Cup victory (2018)</li>
+                            <li>5-time IPL champion as captain of Mumbai Indians</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="hardik-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Hardik Pandya - Career</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img src="/Image/hardik-pandya.png" alt="Hardik Pandya">
+                </div>
+                <div class="modal-info">
+                    <p class="player-bio">
+                        Hardik Himanshu Pandya is an Indian international cricketer who plays for Baroda in domestic cricket and captains Gujarat Titans in the Indian Premier League. He is an all-rounder who bats right-handed and bowls right-arm fast-medium. He is known for his aggressive batting style and effective bowling in crucial situations.
+                    </p>
+                    <div class="career-stats">
+                        <h3>Career Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="value">1,500+</div>
+                                <div class="label">ODI Runs</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">142</div>
+                                <div class="label">Wickets</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">92.4</div>
+                                <div class="label">Strike Rate</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">29.3</div>
+                                <div class="label">Batting Avg</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievements">
+                        <h3>Major Achievements</h3>
+                        <ul>
+                            <li>ICC Champions Trophy 2017 (Runner-up with India)</li>
+                            <li>IPL champion with Mumbai Indians (2015, 2017, 2019, 2020)</li>
+                            <li>Captained Gujarat Titans to IPL victory in debut season (2022)</li>
+                            <li>Fastest fifty by an Indian in T20I (17 balls vs Pakistan)</li>
+                            <li>Arjuna Award for Cricket (2020)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="rahul-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>KL Rahul - Career</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img src="/Image/rahul.jpg" alt="KL Rahul">
+                </div>
+                <div class="modal-info">
+                    <p class="player-bio">
+                        Kannur Lokesh Rahul is an Indian international cricketer who plays as a right-handed wicketkeeper-batsman. He is the current vice-captain of the Indian cricket team in limited overs cricket. He captains Lucknow Super Giants in the Indian Premier League and represents Karnataka in domestic cricket.
+                    </p>
+                    <div class="career-stats">
+                        <h3>Career Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="value">2,000+</div>
+                                <div class="label">Test Runs</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">55.4</div>
+                                <div class="label">Batting Avg</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">199</div>
+                                <div class="label">Catches</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">7</div>
+                                <div class="label">Centuries</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievements">
+                        <h3>Major Achievements</h3>
+                        <ul>
+                            <li>Fastest Indian to score an international century in all formats</li>
+                            <li>First Indian to score a century on ODI debut</li>
+                            <li>ICC Most Valuable Player of the Month (November 2020)</li>
+                            <li>Orange Cap winner in IPL 2020 (670 runs)</li>
+                            <li>Highest score by an Indian in T20I (110* vs West Indies)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="sky-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Suryakumar Yadav - Career</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img src="/Image/sky.jpg" alt="Suryakumar Yadav">
+                </div>
+                <div class="modal-info">
+                    <p class="player-bio">
+                        Suryakumar Ashok Yadav is an Indian international cricketer who plays for India in limited overs cricket and for Mumbai in domestic cricket. Known for his innovative stroke play and ability to play 360-degree shots, he is considered one of the best T20 batsmen in the world. He plays for Mumbai Indians in the Indian Premier League.
+                    </p>
+                    <div class="career-stats">
+                        <h3>Career Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="value">180.3</div>
+                                <div class="label">Strike Rate</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">15</div>
+                                <div class="label">Man of Match</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">44.8</div>
+                                <div class="label">Batting Avg</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="value">4</div>
+                                <div class="label">T20I Centuries</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievements">
+                        <h3>Major Achievements</h3>
+                        <ul>
+                            <li>ICC T20I Player of the Year (2022)</li>
+                            <li>Fastest T20I century by an Indian (45 balls)</li>
+                            <li>Ranked No.1 T20I batsman in ICC rankings</li>
+                            <li>IPL champion with Mumbai Indians (2015, 2019, 2020)</li>
+                            <li>Most T20I runs in a calendar year (1,164 runs in 2022)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/mr_.vibe._45?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>© 2025 Ganesh. All rights reserved.</p>
+            <p class="copyright">Designed with passion for cricket enthusiasts</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Toggle login form
+        const loginBtn = document.getElementById('loginBtn');
+        const loginForm = document.getElementById('loginForm');
+        
+        loginBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            loginForm.style.display = loginForm.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        // Close login form when clicking outside
+        document.addEventListener('click', function(e) {
+            if (loginForm.style.display === 'block' && 
+                !loginForm.contains(e.target) && 
+                e.target !== loginBtn) {
+                loginForm.style.display = 'none';
+            }
+        });
+        
+        // Prevent closing when clicking inside form
+        loginForm.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        // Login functionality
+        function checkLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hardcoded credentials
+            const correctUsername = "ganesh";
+            const correctPassword = "12345";
+            
+            if (username === correctUsername && password === correctPassword) {
+                // Hide login form
+                loginForm.style.display = 'none';
+                
+                // Show Rohit Sharma modal
+                showModal('rohit');
+                
+                // Clear form
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+                errorMessage.textContent = '';
+            } else {
+                errorMessage.textContent = 'Invalid username or password';
+            }
+        }
+        
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            alert('You have been logged out successfully.');
+            // Here you would typically clear session data
+        });
+        
+        // Search functionality
+        function searchImage() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query.toLowerCase().includes("rohit")) {
+                // Show Rohit Sharma modal
+                showModal('rohit');
+            } else {
+                alert("Please type 'Rohit' to search.");
+            }
+        }
+        
+        // Player data (for demonstration)
+        const players = {
+            rohit: {
+                name: "Rohit Sharma",
+                img: "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?q=80&w=800",
+                bio: "Rohit Gurunath Sharma is an Indian international cricketer and the current captain of the Indian national cricket team. He is a right-handed opening batsman and an occasional right-arm off break bowler. He plays for Mumbai in domestic cricket and captains Mumbai Indians in the Indian Premier League.",
+                stats: {
+                    runs: "10,000+",
+                    centuries: "40",
+                    highestScore: "264",
+                    avg: "49.27"
+                },
+                achievements: [
+                    "Only player with three double-centuries in ODIs",
+                    "Highest individual score in ODIs (264 vs Sri Lanka)",
+                    "ICC ODI Player of the Year (2019)",
+                    "Led India to Asia Cup victory (2018)",
+                    "5-time IPL champion as captain of Mumbai Indians"
+                ]
+            },
+            hardik: {
+                name: "Hardik Pandya",
+                img: "https://images.unsplash.com/photo-1605135693937-fb1fe7b398e2?q=80&w=800",
+                bio: "Hardik Himanshu Pandya is an Indian international cricketer who plays for Baroda in domestic cricket and captains Gujarat Titans in the Indian Premier League. He is an all-rounder who bats right-handed and bowls right-arm fast-medium. He is known for his aggressive batting style and effective bowling in crucial situations.",
+                stats: {
+                    runs: "1,500+",
+                    wickets: "142",
+                    strikeRate: "92.4",
+                    avg: "29.3"
+                },
+                achievements: [
+                    "ICC Champions Trophy 2017 (Runner-up with India)",
+                    "IPL champion with Mumbai Indians (2015, 2017, 2019, 2020)",
+                    "Captained Gujarat Titans to IPL victory in debut season (2022)",
+                    "Fastest fifty by an Indian in T20I (17 balls vs Pakistan)",
+                    "Arjuna Award for Cricket (2020)"
+                ]
+            },
+            rahul: {
+                name: "KL Rahul",
+                img: "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?q=80&w=800",
+                bio: "Kannur Lokesh Rahul is an Indian international cricketer who plays as a right-handed wicketkeeper-batsman. He is the current vice-captain of the Indian cricket team in limited overs cricket. He captains Lucknow Super Giants in the Indian Premier League and represents Karnataka in domestic cricket.",
+                stats: {
+                    runs: "2,000+",
+                    avg: "55.4",
+                    catches: "199",
+                    centuries: "7"
+                },
+                achievements: [
+                    "Fastest Indian to score an international century in all formats",
+                    "First Indian to score a century on ODI debut",
+                    "ICC Most Valuable Player of the Month (November 2020)",
+                    "Orange Cap winner in IPL 2020 (670 runs)",
+                    "Highest score by an Indian in T20I (110* vs West Indies)"
+                ]
+            },
+            sky: {
+                name: "Suryakumar Yadav",
+                img: "https://images.unsplash.com/photo-1605135693937-fb1fe7b398e2?q=80&w=800",
+                bio: "Suryakumar Ashok Yadav is an Indian international cricketer who plays for India in limited overs cricket and for Mumbai in domestic cricket. Known for his innovative stroke play and ability to play 360-degree shots, he is considered one of the best T20 batsmen in the world. He plays for Mumbai Indians in the Indian Premier League.",
+                stats: {
+                    strikeRate: "180.3",
+                    mom: "15",
+                    avg: "44.8",
+                    centuries: "4"
+                },
+                achievements: [
+                    "ICC T20I Player of the Year (2022)",
+                    "Fastest T20I century by an Indian (45 balls)",
+                    "Ranked No.1 T20I batsman in ICC rankings",
+                    "IPL champion with Mumbai Indians (2015, 2019, 2020)",
+                    "Most T20I runs in a calendar year (1,164 runs in 2022)"
+                ]
+            }
+        };
+        
+        // DOM elements
+        const playerCards = document.querySelectorAll('.player-card');
+        const modals = document.querySelectorAll('.modal');
+        const closeButtons = document.querySelectorAll('.close-modal');
+        
+        // Show modal function
+        function showModal(playerId) {
+            // Hide all modals first
+            modals.forEach(modal => {
+                modal.classList.remove('active');
+            });
+            
+            // Show the specific modal
+            const modal = document.getElementById(`${playerId}-modal`);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+        }
+        
+        // Close modal function
+        function closeModal() {
+            modals.forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto'; // Enable scrolling
+        }
+        
+        // Event listeners
+        playerCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const playerId = card.getAttribute('data-player');
+                showModal(playerId);
+            });
+        });
+        
+        closeButtons.forEach(button => {
+            button.addEventListener('click', closeModal);
+        });
+        
+        // Close modal when clicking outside content
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
